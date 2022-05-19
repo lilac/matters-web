@@ -6,3 +6,15 @@ ul {
 .access {
   padding: var(--spacing-base);
 }
+
+.publishISCN {
+  & .switch {
+    & header {
+      @mixin flex-center-space-between;
+    }
+  }
+
+  & .switch + :global(*) {
+    margin-top: var(--spacing-base);
+  }
+}

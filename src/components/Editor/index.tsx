@@ -15,3 +15,9 @@ export type SetTagsProps = {
   editTags: (tag: DigestTag[]) => Promise<any>
   tagsSaving: boolean
 }
+
+export type SetPublishISCNProps = {
+  iscnPublish?: boolean | null
+  editPublishISCN: (iscnPublish: boolean) => Promise<any>
+  iscnPublishSaving: boolean
+}

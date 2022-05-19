@@ -1,4 +1,4 @@
-import { Dialog, Translate } from '~/components'
+import { Dialog, Switch, Translate } from '~/components'
 
 import { Step } from '../../SettingsDialog'
 import ToggleAccess, { ToggleAccessProps } from '../../ToggleAccess'
@@ -44,7 +44,7 @@ const SettingsList = ({
   return (
     <>
       <Dialog.Header
-        title={<Translate zh_hant="設定" zh_hans="设定" en="Settings" />}
+        title={<Translate id="settings" />}
         closeDialog={closeDialog}
         closeTextId="close"
         mode="hidden"
@@ -53,18 +53,14 @@ const SettingsList = ({
       <Dialog.Content hasGrow>
         <ul>
           <ListItem
-            title={
-              <Translate zh_hant="設定封面" zh_hans="设定封面" en="Set Cover" />
-            }
+            title={<Translate id="setCover" />}
             onClick={() => forward('cover')}
           >
             <ListItem.CoverIndicator cover={cover} />
           </ListItem>
 
           <ListItem
-            title={
-              <Translate zh_hant="添加標籤" zh_hans="添加标签" en="Add Tags" />
-            }
+            title={<Translate id="addTags" />}
             subTitle={tagsCount === 0 && <Translate id="hintAddTag2" />}
             onClick={() => forward('tag')}
           >
@@ -72,13 +68,7 @@ const SettingsList = ({
           </ListItem>
 
           <ListItem
-            title={
-              <Translate
-                zh_hant="關聯作品"
-                zh_hans="关联作品"
-                en="Set Collection"
-              />
-            }
+            title={<Translate id="setCollection" />}
             onClick={() => forward('collection')}
           >
             <ListItem.NumberIndicator num={collectionCount} />
@@ -86,6 +76,24 @@ const SettingsList = ({
 
           <section className="access">
             <ToggleAccess {...restProps} />
+          </section>
+
+          <section className="publishISCN">
+            <section className="switch">
+              <header>
+                <h3>
+                  <Translate id="publishToISCN" />
+                </h3>
+
+                <Switch
+                  checked={false}
+                  onChange={() => {
+                    console.log('toogle change')
+                  }}
+                  // loading={accessSaving}
+                />
+              </header>
+            </section>
           </section>
 
           {(confirmButtonText || cancelButtonText) && (
